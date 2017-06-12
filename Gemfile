@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'slim'
+gem 'simple_form'
 
 # devise for authentication
 gem 'devise'

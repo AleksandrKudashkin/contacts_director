@@ -11,4 +11,4 @@
   = link_to "Add a category", new_category_path
 
   - @categories.each do |category|
-    h4= category.name
+    h4= link_to category.name, edit_category_path(category)
