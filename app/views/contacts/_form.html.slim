@@ -9,18 +9,18 @@
             li= message
 
   = form.hidden_field :user_id
-  = form.label "Contact's category"
+  = form.label "Contact's category", for: :category_id
   p= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Please select Category", class: "form-control")
 
-  = form.label "First name"
+  = form.label "First name", for: :first_name
   = form.text_field :first_name, class: "form-control"
-  = form.label "Last name"
+  = form.label "Last name", for: :last_name
   = form.text_field :last_name, class: "form-control"
-  = form.label "Phone"
+  = form.label "Phone", for: :phone
   = form.text_field :phone, class: "form-control"
-  = form.label "Email"
+  = form.label "Email", for: :email
   = form.text_field :email, class: "form-control"
-  = form.label "Image"
+  = form.label "Image", for: :file
   = form.file_field :file
   br
   p= form.submit
