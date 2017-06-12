@@ -30,10 +30,13 @@ end
 group :test do
   gem 'poltergeist'
   gem 'capybara', '~> 2.13'
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
   gem 'fuubar'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
