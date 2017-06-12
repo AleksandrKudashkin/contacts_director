@@ -10,21 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612022255) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "street_1"
-    t.string "street_2"
-    t.string "city"
-    t.string "province"
-    t.string "country"
-    t.string "postal_code"
-    t.integer "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "comment"
-    t.index ["contact_id"], name: "index_addresses_on_contact_id"
-  end
+ActiveRecord::Schema.define(version: 20170612050909) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -36,23 +22,21 @@ ActiveRecord::Schema.define(version: 20170612022255) do
     t.string "first_name"
     t.string "last_name"
     t.string "company"
-    t.date "birthday"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "user_id"
+    t.string "phone_1"
+    t.string "phone_2"
+    t.string "email"
+    t.string "street_1"
+    t.string "street_2"
+    t.string "city"
+    t.string "country"
+    t.string "postal_code"
     t.index ["category_id"], name: "index_contacts_on_category_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
-  end
-
-  create_table "emails", force: :cascade do |t|
-    t.string "address"
-    t.string "comment"
-    t.integer "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_emails_on_contact_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -61,24 +45,6 @@ ActiveRecord::Schema.define(version: 20170612022255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_images_on_contact_id", unique: true
-  end
-
-  create_table "phones", force: :cascade do |t|
-    t.string "number"
-    t.string "comment"
-    t.integer "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_phones_on_contact_id"
-  end
-
-  create_table "urls", force: :cascade do |t|
-    t.string "address"
-    t.integer "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "comment"
-    t.index ["contact_id"], name: "index_urls_on_contact_id"
   end
 
   create_table "users", force: :cascade do |t|
