@@ -7,6 +7,22 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    p.notice= notice
-    p.alert= alert
-    = yield
+    .navbar.navbar-default
+      .container-fluid
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          - if user_signed_in?
+            = link_to 'Log out', destroy_user_session_path, method: :delete
+            
+    p.notice.text-center= notice
+    p.alert.text-center= alert
+    
+    .container
+      .row.well.well-lg
+        .col-lg-12
+          = yield
+    
+    .footer
+      .container
+        .row.text-center
+          .col-md-12
+            |© 2017 Aleksandr Kudashkin. 

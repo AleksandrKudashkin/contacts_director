@@ -1,0 +1,8 @@
+h3.text-center
+  | Welcome to Contacts Directory!
+- unless user_signed_in?
+  p.text-center
+    | Please, 
+    => link_to "sign in", new_user_session_path
+    | or 
+    => link_to "sign up", new_user_registration_path
