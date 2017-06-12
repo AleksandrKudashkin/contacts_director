@@ -3,7 +3,7 @@
     | Contacts
   = link_to "Add a contact", new_contact_path
   - @contacts.each do |contact|
-    = link_to contact.first_name, contact_path(contact)
+    h4= link_to "#{contact.first_name} #{contact.last_name}", contact_path(contact)
   
 .col-md-6
   h3

@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
+    @contact = Contact.new(user: current_user)
   end
 
   def edit
@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    if @contact.save
+    if @contact.user_id == current_user.id && @contact.save
       redirect_to @contact, notice: 'Contact was successfully created.'
     else
       render :new
@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update(category_params)
+    if @contact.user_id == current_user.id && @contact.update(contact_params)
       redirect_to @contact, notice: 'Contact was successfully updated.'
     else
       render :edit
@@ -49,9 +49,11 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(
         :first_name,
         :last_name,
-        :company,
-        :birthday,
-        :notes
+        :phone,
+        :email,
+        :user_id,
+        :category_id,
+        image_attributes: [:id, :file, :_destroy]
         )
     end
 end

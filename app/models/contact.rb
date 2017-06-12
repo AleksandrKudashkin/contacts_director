@@ -1,9 +1,9 @@
 class Contact < ApplicationRecord
-  has_many :emails, dependent: :destroy
-  has_many :phones, dependent: :destroy
-  has_many :urls, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  belongs_to :user
+  belongs_to :category
   has_one :image, dependent: :destroy
+
+  accepts_nested_attributes_for :image, allow_destroy: true
 
   validates :first_name, presence: true
 end

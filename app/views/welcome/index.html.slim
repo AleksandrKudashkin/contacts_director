@@ -1,6 +1,9 @@
 h3.text-center
   | Welcome to Contacts Directory!
-- unless user_signed_in?
+- if user_signed_in?
+  p.text-center
+    = link_to "See my contacts", contacts_path
+- else
   p.text-center
     | Please, 
     => link_to "sign in", new_user_session_path

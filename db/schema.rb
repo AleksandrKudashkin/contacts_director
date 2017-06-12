@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612050909) do
+ActiveRecord::Schema.define(version: 20170612054605) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -21,20 +21,12 @@ ActiveRecord::Schema.define(version: 20170612050909) do
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "company"
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "user_id"
-    t.string "phone_1"
-    t.string "phone_2"
     t.string "email"
-    t.string "street_1"
-    t.string "street_2"
-    t.string "city"
-    t.string "country"
-    t.string "postal_code"
+    t.string "phone"
     t.index ["category_id"], name: "index_contacts_on_category_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end

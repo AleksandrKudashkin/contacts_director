@@ -1,0 +1,26 @@
+= form_for(@contact, html: { class: 'form-horizontal' }) do |form|
+  - if contact.errors.any?
+      #error_explanation
+        h4
+          => pluralize(contact.errors.count, "error")
+          | prohibited this category from being saved:
+        ul
+          - contact.errors.full_messages.each do |message|
+            li= message
+
+  = form.hidden_field :user_id
+  = form.label "Contact's category"
+  p= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Please select Category", class: "form-control")
+
+  = form.label "First name"
+  = form.text_field :first_name, class: "form-control"
+  = form.label "Last name"
+  = form.text_field :last_name, class: "form-control"
+  = form.label "Phone"
+  = form.text_field :phone, class: "form-control"
+  = form.label "Email"
+  = form.text_field :email, class: "form-control"
+  = form.label "Image"
+  = form.fields_for :image do |f|
+    = f.file_field :file
+  p= form.submit
