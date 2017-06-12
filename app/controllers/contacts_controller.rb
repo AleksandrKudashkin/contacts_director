@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :clear_filter
 
   def index
     @contacts = Contact.all
@@ -40,7 +41,18 @@ class ContactsController < ApplicationController
     redirect_to contacts_url, notice: 'Contact was successfully destroyed.'
   end
 
+  def filter
+    @contacts = Contact.where(category_id: params[:category_id])
+    @categories = Category.where(id: params[:category_id])
+    @filter_on = true
+    render 'index'
+  end
+
   private
+    def clear_filter
+      @filter_on = false
+    end
+
     def set_category
       @contact = Contact.find(params[:id])
     end
@@ -53,7 +65,7 @@ class ContactsController < ApplicationController
         :email,
         :user_id,
         :category_id,
-        image_attributes: [:id, :file, :_destroy]
+        :file
         )
     end
 end

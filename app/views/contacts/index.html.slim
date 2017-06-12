@@ -9,6 +9,15 @@
   h3
     | Categories
   = link_to "Add a category", new_category_path
+  p= link_to "List of categories", categories_path
 
+  p
+    strong
+      | Filter contacts by category
   - @categories.each do |category|
-    h4= link_to category.name, edit_category_path(category)
+    - if @filter_on
+      h4= category.name
+      h6= link_to 'Clear filter', contacts_path
+    - else 
+      h4= link_to category.name, filter_path(category.id)
+

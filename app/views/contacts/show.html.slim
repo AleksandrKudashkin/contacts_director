@@ -1,10 +1,27 @@
 p#notice= notice
-p= @contact.image.file.url if @contact.image
-p= @contact.first_name
-p= @contact.last_name
-p= @contact.phone
-p= @contact.email
-p= @contact.category.name if @contact.category
-= link_to 'Edit', edit_contact_path(@contact)
+p= image_tag(@contact.file.url, size: "100x100") if @contact.file.url
+p
+  strong
+    | Category: 
+  = @contact.category.name if @contact.category
+p
+  strong
+    | First name: 
+  = @contact.first_name
+p
+  strong
+    | Last name: 
+  = @contact.last_name
+p
+  strong
+    | Phone: 
+  = @contact.phone
+p
+  strong
+    | Email: 
+  = @contact.email
+= link_to ' Edit ', edit_contact_path(@contact)
 | \
-= link_to 'Back', contacts_path
+= link_to ' Destroy ', @contact, method: :delete, data: { confirm: 'Are you sure?' }
+| \
+= link_to ' Back ', contacts_path

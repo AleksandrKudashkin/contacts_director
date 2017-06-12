@@ -3,4 +3,6 @@ class Image < ApplicationRecord
 
   validates :file, presence: true
   validates :contact_id, uniqueness: true
+
+  mount_uploader :file, FileUploader
 end

@@ -21,6 +21,6 @@
   = form.label "Email"
   = form.text_field :email, class: "form-control"
   = form.label "Image"
-  = form.fields_for :image do |f|
-    = f.file_field :file
+  = form.file_field :file
+  br
   p= form.submit
