@@ -16,6 +16,9 @@ gem 'slim'
 # devise for authentication
 gem 'devise'
 
+# image uploading
+gem 'carrierwave'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'spring'
