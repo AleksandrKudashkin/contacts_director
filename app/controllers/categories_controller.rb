@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
+    if @category.user_id == current_user.id && @category.update(category_params)
       redirect_to @category, notice: 'Category was successfully updated.'
     else
       render :edit
@@ -35,8 +35,11 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    redirect_to categories_url, notice: 'Category was successfully destroyed.'
+    if @category.user_id == current_user.id && @category.destroy 
+      redirect_to categories_url, notice: 'Category was successfully destroyed.'
+    else
+      redirect_to categories_url, alert: 'Category was not successfully destroyed.'
+    end
   end
 
   private
