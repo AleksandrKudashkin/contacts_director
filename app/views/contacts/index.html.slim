@@ -9,5 +9,6 @@
   h3
     | Categories
   = link_to "Add a category", new_category_path
+
   - @categories.each do |category|
-    = category.name
+    h4= category.name
