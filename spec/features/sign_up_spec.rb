@@ -13,7 +13,7 @@ feature 'User signs up', '
     click_on 'Sign up'
   end
 
-  scenario 'New user sees the confirmation', :email do
-    expect(current_page).to have_content 'Welcome! You have signed up successfully.'
+  scenario 'New user sees the confirmation' do
+    expect(page).to have_content 'Welcome! You have signed up successfully.'
   end
 end
