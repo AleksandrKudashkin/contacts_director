@@ -3,5 +3,6 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all
+    @categories = Category.all
   end
 end

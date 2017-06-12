@@ -1,1 +1,13 @@
-= @contacts
+.col-md-6
+  h3
+    | Contacts
+  = link_to "Add a contact", new_contact_path
+  - @contacts.each do |contact|
+    = link_to contact.first_name, contact_path(contact)
+  
+.col-md-6
+  h3
+    | Categories
+  = link_to "Add a category", new_category_path
+  - @categories.each do |category|
+    = category.name
